@@ -27,11 +27,11 @@ class Hangman
 
 	def check_guess
 		@word.each_with_index do |letter, index| 
-			if letter == @guess
-				@hidden_letters[index] = @guess
+			if letter.downcase == @guess
+				@hidden_letters[index] = letter
 			end
 		end
-		if (@word.find { |letter| letter == @guess }) == nil
+		if (@word.find { |letter| letter.downcase == @guess }) == nil
 			@incorrect_guess.push(@guess)
 			@error += 1
 			update_man
@@ -67,28 +67,18 @@ class Hangman
 		if @error == 6
 			display
 			puts "Your poor vocabulary cost a good man his life."
+			puts "The word was #{@word.join("")}"
 			return true
 		end
 		if @hidden_letters.all? { |letter| letter != '_' }
+			display
 			puts "You saved him!"
+			puts "The word was #{@word.join("")}"
 			return true
 		end
 	end
-
-	def game
-		until game_over?
-			display
-			make_guess
-			check_guess
-		end
-	end
-
 end
 
 
 
-
-
-game = Hangman.new
-game.game
 

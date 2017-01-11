@@ -1,0 +1,22 @@
+--- !ruby/object:Hangman
+word:
+- r
+- e
+- c
+- t
+- o
+hidden_letters:
+- _
+- _
+- _
+- _
+- _
+incorrect_guess: []
+error: 0
+man:
+- "|----|"
+- "|"
+- "|"
+- "|"
+- "|"
+- "|"
